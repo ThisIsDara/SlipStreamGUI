@@ -1,5 +1,9 @@
 # SlipStream GUI Client
 
+**Languages:** [English](README.md) | [فارسی](README_FARSI.md)
+
+---
+
 ## ⭐ Overview
 
 SlipStream GUI is a user-friendly graphical interface for managing DNS-over-HTTPS tunneling sessions. Built with Python and Tkinter, it provides an intuitive way to configure, start, and monitor multiple concurrent proxy connections with real-time logging and system-wide proxy settings integration.
@@ -34,8 +38,6 @@ SlipStream GUI is a user-friendly graphical interface for managing DNS-over-HTTP
    ```bash
    python slipstream_gui.py
    ```
-
-> **Note:** Tkinter comes pre-installed with Python on Windows. No additional dependencies required!
 
 ---
 
