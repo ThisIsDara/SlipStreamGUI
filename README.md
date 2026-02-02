@@ -15,7 +15,7 @@ SlipStream GUI is a user-friendly graphical interface for managing DNS-over-HTTP
 ### Option 1: Download Pre-Built Executable (Recommended)
 
 1. Go to the [Releases page](https://github.com/ThisIsDara/SlipStreamGUI/releases)
-2. Download **[SlipStream GUI v1.0.1](https://github.com/ThisIsDara/SlipStreamGUI/releases/tag/SlipStreamGUI1.0.1)**
+2. Download **[SlipStream GUI v1.0.2](https://github.com/ThisIsDara/SlipStreamGUI/releases/tag/v1.0.2)**
 3. Extract the archive
 4. Run `SlipstreamGUI.exe`
 
