@@ -1,0 +1,65 @@
+name: Build SlipStream GUI
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Download slipstream binary
+        run: |
+          Invoke-WebRequest -Uri "https://github.com/ThisIsDara/SlipStreamGUI/releases/download/SlipStreamGUI1.0.1/slipstream-binary.rar" -OutFile "slipstream-binary.rar"
+          # Install 7-Zip to extract RAR
+          choco install 7zip -y
+          7z x slipstream-binary.rar -o.
+        shell: pwsh
+
+      - name: Build executable
+        run: |
+          pyinstaller --onefile --noconsole --name SlipstreamGUI --icon stream.ico --add-data "stream.ico;." --add-binary "slipstream-client-windows-amd64.exe;." slipstream_gui.py
+        shell: pwsh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SlipstreamGUI-Windows
+          path: dist/SlipstreamGUI.exe
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: SlipstreamGUI-Windows
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: SlipstreamGUI.exe
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
