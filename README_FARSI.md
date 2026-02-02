@@ -15,7 +15,7 @@
 ### گزینه ۱: دانلود نسخه آماده (پیشنهادی)
 
 1. برو به صفحه ریلیزها: https://github.com/ThisIsDara/SlipStreamGUI/releases
-2. نسخه **SlipStream GUI v1.0.1** رو دانلود کن
+2. نسخه **SlipStream GUI v1.0.2** رو دانلود کن
 3. فایل رو از حالت فشرده خارج کن
 4. `SlipstreamGUI.exe` رو اجرا کن
 
